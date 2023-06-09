@@ -1,6 +1,5 @@
 package com.lysenko.view;
 
-import com.lysenko.controller.DeveloperController;
 import com.lysenko.controller.SkillController;
 import com.lysenko.entity.Skill;
 import com.lysenko.entity.Status;

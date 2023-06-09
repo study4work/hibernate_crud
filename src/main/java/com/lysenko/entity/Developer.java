@@ -10,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,8 @@ public class Developer {
         skills.add(skill);
     }
 
-    @OneToOne(mappedBy = "developer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "specialty_id")
     private Specialty specialty;
 
     @Enumerated(EnumType.STRING)
@@ -92,5 +91,17 @@ public class Developer {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Developer{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", skills=" + skills +
+            ", specialty=" + specialty +
+            ", status=" + status +
+            '}';
     }
 }

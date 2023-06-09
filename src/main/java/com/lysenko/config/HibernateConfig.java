@@ -3,6 +3,7 @@ package com.lysenko.config;
 import com.lysenko.entity.Developer;
 import com.lysenko.entity.Skill;
 import com.lysenko.entity.Specialty;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -10,7 +11,7 @@ public class HibernateConfig {
 
     private static SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    private static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 // Создание объекта Configuration с настройками Hibernate
@@ -35,5 +36,9 @@ public class HibernateConfig {
             }
         }
         return sessionFactory;
+    }
+
+    public static Session getSession() {
+       return getSessionFactory().openSession();
     }
 }

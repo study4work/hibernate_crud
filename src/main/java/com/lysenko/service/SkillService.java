@@ -2,52 +2,35 @@ package com.lysenko.service;
 
 import com.lysenko.entity.Skill;
 import com.lysenko.repository.SkillRepository;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import com.lysenko.repository.hibernateImpl.SkillRepositoryImpl;
 
 import java.util.List;
 
-public class SkillService implements SkillRepository {
+public class SkillService {
 
-    private final Session session;
+    private final SkillRepository skillRepository;
 
-    public SkillService(Session session) {
-        this.session = session;
+    public SkillService() {
+        this.skillRepository = new SkillRepositoryImpl();
     }
 
     public Skill save(Skill skill) {
-        Transaction transaction = session.beginTransaction();
-        session.save(skill);
-        transaction.commit();
-        return skill;
+        return skillRepository.save(skill);
     }
 
-    public Skill update(Long id, Skill skill) {
-        Transaction transaction = session.beginTransaction();
-        Skill skillToUpdate = session.get(Skill.class, id);
-        skillToUpdate.setSkillDescription(skill.getSkillDescription());
-        transaction.commit();
-        return skill;
+    public Skill update(Long id ,Skill skill) {
+        return skillRepository.update(id ,skill);
     }
 
     public Skill findById(Long id) {
-        Transaction transaction = session.beginTransaction();
-        Skill skillToUpdate = session.get(Skill.class, id);
-        transaction.commit();
-        return skillToUpdate;
+        return skillRepository.findById(id);
     }
 
     public List<Skill> findAll() {
-        Transaction transaction = session.beginTransaction();
-        List<Skill> skillList = session.createQuery("FROM Skill", Skill.class).list();
-        transaction.commit();
-        return skillList;
+        return skillRepository.findAll();
     }
 
     public void delete(Long id) {
-        Transaction transaction = session.beginTransaction();
-        Skill skillToUpdate = session.get(Skill.class, id);
-        session.delete(skillToUpdate);
-        transaction.commit();
+        skillRepository.delete(id);
     }
 }

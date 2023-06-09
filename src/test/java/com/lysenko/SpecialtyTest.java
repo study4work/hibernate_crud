@@ -1,6 +1,5 @@
 package com.lysenko;
 
-import com.lysenko.controller.SpecialtyController;
 import com.lysenko.entity.Specialty;
 import com.lysenko.service.SpecialtyService;
 import org.junit.Test;
@@ -15,13 +14,12 @@ import static org.mockito.Mockito.verify;
 public class SpecialtyTest {
 
     private final SpecialtyService specialtyService = mock(SpecialtyService.class);
-    private final SpecialtyController specialtyController = new SpecialtyController(specialtyService);
 
     @Test
     public void createSpecialtyTest() {
         Specialty specialty = new Specialty();
         specialty.setDescriptionSpecialty("des");
-        specialtyController.save(specialty);
+        specialtyService.save(specialty);
         verify(specialtyService, times(1)).save(specialty);
     }
 }

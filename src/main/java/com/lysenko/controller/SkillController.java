@@ -9,8 +9,8 @@ public class SkillController {
 
     private final SkillService skillService;
 
-    public SkillController(SkillService skillService) {
-        this.skillService = skillService;
+    public SkillController() {
+        this.skillService = new SkillService();
     }
 
     public Skill save(Skill skill) {
@@ -25,7 +25,7 @@ public class SkillController {
         return skillService.findById(id);
     }
 
-    public List findAll() {
+    public List<Skill> findAll() {
         return skillService.findAll();
     }
 

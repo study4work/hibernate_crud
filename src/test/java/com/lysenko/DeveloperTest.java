@@ -4,7 +4,10 @@ import com.lysenko.controller.DeveloperController;
 import com.lysenko.entity.Developer;
 import com.lysenko.entity.Skill;
 import com.lysenko.entity.Specialty;
+import com.lysenko.repository.DeveloperRepository;
+import com.lysenko.repository.hibernateImpl.DeveloperRepositoryImpl;
 import com.lysenko.service.DeveloperService;
+import org.hibernate.Session;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -18,8 +21,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class DeveloperTest {
 
-   private final DeveloperService developerService = mock(DeveloperService.class);
-   private final DeveloperController developerController = new DeveloperController(developerService);
+   private final DeveloperController developerController = mock(DeveloperController.class);
 
    @Test
    public void createDeveloperTest() {
@@ -31,6 +33,6 @@ public class DeveloperTest {
       developer.setSkills(skills);
       developer.setSpecialty(specialty);
       developerController.save(developer);
-      verify(developerService, times(1)).save(developer);
+      verify(developerController, times(1)).save(developer);
    }
 }

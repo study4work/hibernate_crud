@@ -6,7 +6,7 @@ public enum Status {
 
     public static Status getValue(String source) {
         for (Status value : values()) {
-            if (value.name().equals(source))
+            if (value.name().equals(source.toUpperCase()))
                 return value;
         }
         return null;

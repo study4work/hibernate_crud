@@ -9,23 +9,23 @@ public class DeveloperController {
 
     private final DeveloperService developerService;
 
-    public DeveloperController(DeveloperService developerService) {
-        this.developerService = developerService;
+    public DeveloperController() {
+        this.developerService = new DeveloperService();
     }
 
     public Developer save(Developer developer) {
         return developerService.save(developer);
     }
 
-    public void update(Long id, Developer developer) {
-        developerService.update(id, developer);
+    public Developer update(Long id, Developer developer) {
+        return developerService.update(id, developer);
     }
 
     public Developer findById(Long id) {
         return developerService.findById(id);
     }
 
-    public List findAll() {
+    public List<Developer> findAll() {
         return developerService.findAll();
     }
 

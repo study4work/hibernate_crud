@@ -6,8 +6,6 @@ import com.lysenko.entity.Skill;
 import com.lysenko.entity.Specialty;
 import com.lysenko.entity.Status;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class DeveloperView {

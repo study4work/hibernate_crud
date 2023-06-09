@@ -6,10 +6,11 @@ import com.lysenko.service.SpecialtyService;
 import java.util.List;
 
 public class SpecialtyController {
+
     private final SpecialtyService specialtyService;
 
-    public SpecialtyController(SpecialtyService specialtyService) {
-        this.specialtyService = specialtyService;
+    public SpecialtyController() {
+        this.specialtyService = new SpecialtyService();
     }
 
     public Specialty save(Specialty specialty) {
@@ -24,7 +25,7 @@ public class SpecialtyController {
         return specialtyService.findById(id);
     }
 
-    public List findAll() {
+    public List<Specialty> findAll() {
         return specialtyService.findAll();
     }
 
